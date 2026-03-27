@@ -1,0 +1,36 @@
+name: Validate formulas
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Build tars CLI
+        run: |
+          git clone --depth 1 https://github.com/chenchunaidu/tars.git /tmp/tars
+          cd /tmp/tars && go build -o /tmp/tars-bin ./cmd/tars
+
+      - name: Validate Formulas/*.json
+        shell: bash
+        run: |
+          shopt -s nullglob
+          files=(Formulas/*.json)
+          if [[ ${#files[@]} -eq 0 ]]; then
+            echo "No formulas under Formulas/; nothing to validate."
+            exit 0
+          fi
+          for f in "${files[@]}"; do
+            echo "==> $f"
+            /tmp/tars-bin publish validate "$f"
+          done
