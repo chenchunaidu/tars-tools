@@ -21,11 +21,10 @@ jobs:
           git clone --depth 1 https://github.com/chenchunaidu/tars.git /tmp/tars
           cd /tmp/tars && go build -o /tmp/tars-bin ./cmd/tars
 
-      - name: Validate Formulas/*.json
+      - name: Validate all formula JSON files
         shell: bash
         run: |
-          shopt -s nullglob
-          files=(Formulas/*.json)
+          mapfile -t files < <(find Formulas -type f -name '*.json' | sort)
           if [[ ${#files[@]} -eq 0 ]]; then
             echo "No formulas under Formulas/; nothing to validate."
             exit 0
@@ -41,10 +40,15 @@ jobs:
           import glob
           import hashlib
           import json
+          import os
           import sys
           import urllib.request
 
-          paths = sorted(glob.glob("Formulas/*.json"))
+          paths = sorted(
+              p
+              for p in glob.glob("Formulas/**/*.json", recursive=True)
+              if os.path.isfile(p)
+          )
           if not paths:
               print("No formulas; skipping checksum download check.")
               sys.exit(0)
