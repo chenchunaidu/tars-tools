@@ -1,0 +1,20 @@
+{
+  "name": "ripgrep",
+  "version": "15.1.0",
+  "description": "Fast line-oriented search tool (rg). Artifact is the upstream Linux x86_64 musl tarball; pick another release asset and sha256 for macOS or ARM.",
+  "homepage": "https://github.com/BurntSushi/ripgrep",
+  "license": "Unlicense OR MIT",
+  "url": "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz",
+  "sha256": "1c9297be4a084eea7ecaedf93eb03d058d6faae29bbc57ecdaf5063921491599",
+  "bin": ["rg"],
+  "usage": "Recursive search: rg PATTERN [PATH]. Useful flags: -n (line numbers), -l (files with matches), -i (ignore case), --type rust (filter by type). Prefer rg over grep for code search; respects .gitignore by default.",
+  "model": {
+    "summary": "CLI code search; fast, gitignore-aware alternative to grep.",
+    "invocation": "cli",
+    "examples": [
+      "rg 'TODO' .",
+      "rg -n 'fn main' src/",
+      "rg --files -g '*.go'"
+    ]
+  }
+}

@@ -34,3 +34,37 @@ jobs:
             echo "==> $f"
             /tmp/tars-bin publish validate "$f"
           done
+
+      - name: Verify declared sha256 matches downloaded artifact
+        run: |
+          python3 << 'PY'
+          import glob
+          import hashlib
+          import json
+          import sys
+          import urllib.request
+
+          paths = sorted(glob.glob("Formulas/*.json"))
+          if not paths:
+              print("No formulas; skipping checksum download check.")
+              sys.exit(0)
+
+          for path in paths:
+              with open(path, encoding="utf-8") as f:
+                  data = json.load(f)
+              url = data["url"]
+              want = data["sha256"].strip().lower()
+              req = urllib.request.Request(
+                  url,
+                  headers={"User-Agent": "tars-tools-ci/1.0"},
+              )
+              with urllib.request.urlopen(req, timeout=300) as resp:
+                  body = resp.read()
+              got = hashlib.sha256(body).hexdigest()
+              if got != want:
+                  print(f"FAIL {path}: sha256 mismatch", file=sys.stderr)
+                  print(f"  expected: {want}", file=sys.stderr)
+                  print(f"  actual:   {got}", file=sys.stderr)
+                  sys.exit(1)
+              print(f"OK {path} ({len(body)} bytes)")
+          PY
