@@ -1,0 +1,44 @@
+{
+  "name": "nxcurl",
+  "version": "0.0.1",
+  "description": "HTTP CLI for terminal and coding agents: run requests, JSONL history, env substitution, HAR/Postman import, and --json output.",
+  "homepage": "https://github.com/chenchunaidu/nxcurl",
+  "license": "MIT",
+  "platforms": {
+    "darwin_amd64": {
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_darwin_amd64.tar.gz",
+      "sha256": "e30c2a5da019928d939257b84bb8c0072ea44e15f52ac20ed01fdf06c6156c52"
+    },
+    "darwin_arm64": {
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_darwin_arm64.tar.gz",
+      "sha256": "cdddeded471d66098a310a5c9c1dd614640116db855a8da9253e5f81f3690027"
+    },
+    "linux_amd64": {
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_linux_amd64.tar.gz",
+      "sha256": "d7734e5be6c2cf13b01ba2d7bb11f4a53ee91f3cabe3464f4311e1c8dc02ee35"
+    },
+    "linux_arm64": {
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_linux_arm64.tar.gz",
+      "sha256": "7c3c09205e1748e1d87a216c652acc4a5c635877943db3ffb56f8749918760c2"
+    },
+    "windows_amd64": {
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_windows_amd64.zip",
+      "sha256": "d1e79547c99a9701df29608f4359924ce64ebad1d6c2a47c63ebc2782a1a393b"
+    },
+    "windows_arm64": {
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_windows_arm64.zip",
+      "sha256": "8672e6bb3d585be30ae9871b2912f0ae63700f8fe0821d5f1403534b29eb48f2"
+    }
+  },
+  "bin": ["nxcurl", "nxcurl.exe"],
+  "model": {
+    "summary": "Run HTTP requests from the CLI with history, named env files, and structured --json output for agents.",
+    "invocation": "cli",
+    "examples": [
+      "nxcurl run 'https://api.example.com/v1/ping' --json",
+      "nxcurl import har ./capture.har",
+      "nxcurl catalog"
+    ]
+  },
+  "usage": "Invoke as `nxcurl` on macOS/Linux; on Windows the release ships `nxcurl.exe` (tars links both when present). Prefer `nxcurl … --json` for agent-friendly output. After install, `nxcurl catalog` refreshes ~/.nxcurl/catalog/tools.json. Release: https://github.com/chenchunaidu/nxcurl/releases/tag/v0.0.1"
+}
