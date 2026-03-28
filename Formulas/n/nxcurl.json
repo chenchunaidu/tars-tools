@@ -1,44 +1,43 @@
 {
   "name": "nxcurl",
-  "version": "0.0.1",
-  "description": "HTTP CLI for terminal and coding agents: run requests, JSONL history, env substitution, HAR/Postman import, and --json output.",
+  "version": "0.0.2",
+  "description": "HTTP client CLI that returns structured JSON (status, headers, body) — use instead of curl when you need parseable API responses, persistent history, env-based {{VAR}} substitution, or HAR/Postman imports. Examples: `nxcurl run https://api.example.com/users -X GET --json`, `nxcurl run '{{BASE}}/items' -X POST -H 'Authorization: Bearer {{TOKEN}}' -d '{\"name\":\"foo\"}' -e prod --json`, `nxcurl history list --json`, `nxcurl history replay <id> --json`.",
   "homepage": "https://github.com/chenchunaidu/nxcurl",
   "license": "MIT",
   "platforms": {
     "darwin_amd64": {
-      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_darwin_amd64.tar.gz",
-      "sha256": "e30c2a5da019928d939257b84bb8c0072ea44e15f52ac20ed01fdf06c6156c52"
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.2/nxcurl_darwin_amd64.tar.gz",
+      "sha256": "d4e7744a95ac64f103007aa780227a8825f6c527a1e779566ec36244e74c6a08"
     },
     "darwin_arm64": {
-      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_darwin_arm64.tar.gz",
-      "sha256": "cdddeded471d66098a310a5c9c1dd614640116db855a8da9253e5f81f3690027"
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.2/nxcurl_darwin_arm64.tar.gz",
+      "sha256": "fca2fbcdfda8f9de1f1f33c66b1f8835eec09140a74ae0877e50bbdf20145579"
     },
     "linux_amd64": {
-      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_linux_amd64.tar.gz",
-      "sha256": "d7734e5be6c2cf13b01ba2d7bb11f4a53ee91f3cabe3464f4311e1c8dc02ee35"
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.2/nxcurl_linux_amd64.tar.gz",
+      "sha256": "935917e6cae6c4219b190d0e71b353f119b4213d66ffd959ec1b09ad435a5336"
     },
     "linux_arm64": {
-      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_linux_arm64.tar.gz",
-      "sha256": "7c3c09205e1748e1d87a216c652acc4a5c635877943db3ffb56f8749918760c2"
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.2/nxcurl_linux_arm64.tar.gz",
+      "sha256": "89c41628ec6e7ff27ca4835c3ae1522023129ceb70730429eab4ee5584eb3de9"
     },
     "windows_amd64": {
-      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_windows_amd64.zip",
-      "sha256": "d1e79547c99a9701df29608f4359924ce64ebad1d6c2a47c63ebc2782a1a393b"
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.2/nxcurl_windows_amd64.zip",
+      "sha256": "230a4aab260d9ca37f88c91c542177730abfda1921c971ccb42219d74db231d5"
     },
     "windows_arm64": {
-      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.1/nxcurl_windows_arm64.zip",
-      "sha256": "8672e6bb3d585be30ae9871b2912f0ae63700f8fe0821d5f1403534b29eb48f2"
+      "url": "https://github.com/chenchunaidu/nxcurl/releases/download/v0.0.2/nxcurl_windows_arm64.zip",
+      "sha256": "2eb887e8003b17cc752f798858aafeafd97417016dfd462e22d1b28160ad503b"
     }
   },
   "bin": ["nxcurl", "nxcurl.exe"],
   "model": {
-    "summary": "Run HTTP requests from the CLI with history, named env files, and structured --json output for agents.",
+    "summary": "Run HTTP requests from the CLI with history, named env files, and structured --json output. Run nxcurl docs to print the agent skill and refresh ~/.nxcurl/docs/SKILL.md.",
     "invocation": "cli",
     "examples": [
       "nxcurl run 'https://api.example.com/v1/ping' --json",
       "nxcurl import har ./capture.har",
-      "nxcurl catalog"
+      "nxcurl docs"
     ]
-  },
-  "usage": "Invoke as `nxcurl` on macOS/Linux; on Windows the release ships `nxcurl.exe` (tars links both when present). Prefer `nxcurl … --json` for agent-friendly output. After install, `nxcurl catalog` refreshes ~/.nxcurl/catalog/tools.json. Release: https://github.com/chenchunaidu/nxcurl/releases/tag/v0.0.1"
+  }
 }
